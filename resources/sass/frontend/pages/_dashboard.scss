@@ -1,0 +1,35 @@
+// Dashboard Styles
+img {
+    height: auto;
+    max-width: 100%;
+}
+
+.profile-picture {
+    max-height: 90px;
+}
+
+.recent-posts-card {
+    ul {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        li {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+
+            .post-title{
+                font-size: 16px;
+            }
+
+            .post-date {
+                padding-left: 15px;
+
+                &:first-child {
+                    margin-top: 10px
+                }
+            }
+
+        }
+    }
+}
