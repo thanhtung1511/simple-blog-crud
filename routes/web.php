@@ -19,3 +19,13 @@ Route::namespace('Frontend')
     ->group(function () {
         include_files_in_folder(__DIR__.'/frontend/');
     });
+
+/*
+ * Backend Routes
+ */
+Route::namespace('Backend')
+    ->as('admin.')
+    ->prefix('admin')
+    ->group(function () {
+        include_files_in_folder(__DIR__.'/backend/');
+    });
