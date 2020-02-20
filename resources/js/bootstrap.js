@@ -1,4 +1,23 @@
-window._ = require('lodash');
+/**
+ * This bootstrap file is used for both frontend and backend
+ */
+
+import _ from 'lodash'
+// import axios from 'axios'
+import Swal from 'sweetalert2';
+import $ from 'jquery';
+import 'popper.js'; // Required for BS4
+import 'bootstrap';
+
+/**
+ * We'll load jQuery and the Bootstrap jQuery plugin which provides support
+ * for JavaScript based Bootstrap features such as modals and tabs. This
+ * code may be modified to fit the specific needs of your application.
+ */
+
+window.$ = window.jQuery = $;
+window.Swal = Swal;
+window._ = _; // Lodash
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -6,9 +25,9 @@ window._ = require('lodash');
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = require('axios');
-
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+// window.axios = require('axios');
+//
+// window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
