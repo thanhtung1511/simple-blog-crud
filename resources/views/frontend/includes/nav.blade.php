@@ -10,6 +10,13 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav">
 
+            @auth
+                <li class="nav-item">
+                    <a href="{{route('frontend.user.dashboard')}}"
+                       class="nav-link {{ active_class(Route::is('frontend.user.dashboard')) }}">@lang('navs.frontend.dashboard')</a>
+                </li>
+            @endauth
+
             @guest
                 <li class="nav-item">
                     <a href="{{route('frontend.auth.login')}}"
@@ -23,6 +30,19 @@
                     </li>
                 @endif
             @else
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuUser" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">{{ $logged_in_user->name }}</a>
+
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuUser">
+                        <a href="{{ route('frontend.user.account') }}"
+                           class="dropdown-item {{ active_class(Route::is('frontend.user.account')) }}">@lang('navs.frontend.user.account')</a>
+                        <a href="{{ route('frontend.blog.post.index') }}"
+                           class="dropdown-item {{ active_class(Route::is('frontend.blog.post.index')) }}">@lang('navs.frontend.blog.posts')</a>
+                        <a href="{{ route('frontend.auth.logout') }}"
+                           class="dropdown-item">@lang('navs.general.logout')</a>
+                    </div>
+                </li>
             @endguest
 
         </ul>
