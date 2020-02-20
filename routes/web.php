@@ -11,6 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/*
+ * Frontend Routes
+ */
+Route::namespace('Frontend')
+    ->as('frontend.')
+    ->group(function () {
+        include_files_in_folder(__DIR__.'/frontend/');
+    });
