@@ -93,7 +93,6 @@ return [
     'not_in' => 'The selected :attribute is invalid.',
     'not_regex' => 'The :attribute format is invalid.',
     'numeric' => 'The :attribute must be a number.',
-    'password' => 'The password is incorrect.',
     'present' => 'The :attribute field must be present.',
     'regex' => 'The :attribute format is invalid.',
     'required' => 'The :attribute field is required.',
@@ -146,6 +145,68 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
 
+        'backend' => [
+            'access' => [
+                'permissions' => [
+                    'associated_roles' => 'Associated Roles',
+                    'dependencies' => 'Dependencies',
+                    'display_name' => 'Display Name',
+                    'group' => 'Group',
+                    'group_sort' => 'Group Sort',
+
+                    'groups' => [
+                        'name' => 'Group Name',
+                    ],
+
+                    'name' => 'Name',
+                    'first_name' => 'First Name',
+                    'last_name' => 'Last Name',
+                    'system' => 'System',
+                ],
+
+                'roles' => [
+                    'associated_permissions' => 'Associated Permissions',
+                    'name' => 'Name',
+                    'sort' => 'Sort',
+                ],
+
+                'users' => [
+                    'active' => 'Active',
+                    'associated_roles' => 'Associated Roles',
+                    'confirmed' => 'Confirmed',
+                    'email' => 'E-mail Address',
+                    'name' => 'Name',
+                    'last_name' => 'Last Name',
+                    'first_name' => 'First Name',
+                    'other_permissions' => 'Other Permissions',
+                    'password' => 'Password',
+                    'password_confirmation' => 'Password Confirmation',
+                    'send_confirmation_email' => 'Send Confirmation E-mail',
+                    'timezone' => 'Timezone',
+                    'language' => 'Language',
+                ],
+            ],
+        ],
+
+        'frontend' => [
+            'content' => 'Content',
+            'image' => 'Image',
+            'slug' => 'Slug',
+            'title' => 'Title',
+            'avatar' => 'Avatar Location',
+            'email' => 'E-mail Address',
+            'first_name' => 'First Name',
+            'last_name' => 'Last Name',
+            'name' => 'Full Name',
+            'password' => 'Password',
+            'password_confirmation' => 'Password Confirmation',
+            'phone' => 'Phone',
+            'message' => 'Message',
+            'new_password' => 'New Password',
+            'new_password_confirmation' => 'New Password Confirmation',
+            'old_password' => 'Old Password',
+        ],
+    ],
 ];
