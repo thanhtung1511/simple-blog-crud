@@ -96,6 +96,14 @@ return [
         'blog' => [
             'posts' => [
                 'all' => 'All Posts',
+
+                'filter'=>[
+                    'date' => 'Date',
+                    'status' => 'Status',
+                    'title' => 'Filter Posts',
+                    'filter' => 'Filter',
+                ],
+
                 'published' => 'Published Posts',
                 'unpublished' => 'Unpublished Posts',
                 'management' => 'Post Management',

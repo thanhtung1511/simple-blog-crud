@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend\Blog;
 
 use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\Post\ManagePostRequest;
 use App\Http\Requests\Backend\Post\PublishPostRequest;
 use App\Models\Post;
 use App\Repositories\Contracts\PostRepositoryContract;
@@ -25,11 +26,15 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  ManagePostRequest  $request
+     *
      * @return Response
      */
-    public function index()
+    public function index(ManagePostRequest $request)
     {
-        return view('backend.blog.post.index')->withPosts($this->postRepository->paginate());
+        return view('backend.blog.post.index')
+            ->withPosts($this->postRepository->filter($request->only('filter')['filter'])
+            ->paginate());
     }
 
     /**

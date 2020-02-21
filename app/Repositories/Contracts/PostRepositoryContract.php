@@ -5,6 +5,7 @@ namespace App\Repositories\Contracts;
 use App\Exceptions\GeneralException;
 use App\Models\Post;
 use App\Models\User;
+use Doctrine\DBAL\Query\QueryBuilder;
 use File;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
@@ -94,5 +95,11 @@ interface PostRepositoryContract extends BaseRepositoryContract
      * @throws Throwable
      */
     public function delete(Post $post): Post;
+
+    /**
+     * @param $parameters
+     * @return QueryBuilder
+     */
+    public function filter(array $parameters);
 
 }

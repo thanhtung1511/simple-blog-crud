@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Traits\Attribute\PostAttribute;
 use App\Models\Traits\Method\PostMethod;
 use App\Models\Traits\Relationship\PostRelationship;
+use App\Models\Traits\Scope\Filterable;
 use App\Models\Traits\Scope\PostScope;
 use Cviebrock\EloquentSluggable\Sluggable;
 use DateTime;
@@ -30,6 +31,7 @@ class Post extends Model
         PostMethod,
         PostScope,
         PostRelationship;
+    use Filterable;
 
     protected $table = 'posts';
     protected $fillable = ['title', 'slug', 'image', 'content', 'published', 'published_at'];

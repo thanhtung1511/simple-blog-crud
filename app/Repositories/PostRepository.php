@@ -144,4 +144,9 @@ class PostRepository extends BaseRepository implements PostRepositoryContract
             return $post;
         });
     }
+
+    public function filter(array $parameters)
+    {
+        return $this->model->filter($parameters);
+    }
 }

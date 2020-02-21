@@ -16,8 +16,41 @@
                             class="text-muted">{{ __('labels.backend.blog.posts.all') }}</small>
                     </h4>
                 </div><!--col-->
-
             </div><!--row-->
+
+            {{ html()->form('GET', route( 'admin.blog.post.index'))->open() }}
+            <div class="row mt-4 mb-4">
+                <div class="col-sm-3">
+                    <h5 class="">{{ __('labels.backend.blog.posts.filter.title') }}</h5>
+                </div><!--col-->
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        {{ html()->label(__('labels.backend.blog.posts.filter.date'))->class('col-md-2 form-control-label') }}
+
+                        <div class="col-md-10">
+                            {{ html()->text()
+                                ->id('post_date_filter')
+                                ->class('form-control date-range-picker')
+                                ->placeholder(__('labels.backend.blog.posts.filter.date')) }}
+                            {{ html()->hidden('filter[updated_at][start_date]')->class('picker-start-date') }}
+                            {{ html()->hidden('filter[updated_at][end_date]')->class('picker-end-date') }}
+                        </div><!--col-->
+                    </div><!--form-group-->
+                </div><!--col-->
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        {{ html()->label(__('labels.backend.blog.posts.filter.status'))->class('col-md-2 form-control-label')->for('status_filter') }}
+
+                        <div class="col-md-10">
+                            {{ html()->select('filter[published]', ['' => 'All', '1' => 'Published', '0' => 'Unpulished'])->value(request('filter[published]',''))->class('form-control')}}
+                        </div><!--col-->
+                    </div><!--form-group-->
+                </div><!--col-->
+                <div class="col-md-1 col-sm-2">
+                    {{ form_submit(__('labels.backend.blog.posts.filter.filter')) }}
+                </div><!--col-->
+            </div><!--row-->
+            {{ html()->form()->close() }}
 
             <div class="row mt-4">
                 <div class="col">
@@ -36,7 +69,7 @@
                             </thead>
                             <tbody>
                             @foreach($posts as $post)
-                                <tr>
+                                <tr class="{{ $post->published ? '' : 'bg-gray-600' }}">
                                     <td>{{ $post->id }}</td>
                                     <td>{{ $post->title }}</td>
                                     <td>
