@@ -32,6 +32,6 @@ class Post extends Model
         PostRelationship;
 
     protected $table = 'posts';
-    protected $fillable = ['title', 'slug', 'image', 'content', 'published_at'];
+    protected $fillable = ['title', 'slug', 'image', 'content', 'published', 'published_at'];
     protected $dates = ['published_at'];
 }
