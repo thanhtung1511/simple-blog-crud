@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend\Blog;
 
 use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\Post\PublishPostRequest;
 use App\Models\Post;
 use App\Repositories\Contracts\PostRepositoryContract;
 use Illuminate\Http\RedirectResponse;
@@ -29,5 +30,35 @@ class PostController extends Controller
     public function index()
     {
         return view('backend.blog.post.index')->withPosts($this->postRepository->paginate());
+    }
+
+    /**
+     * @param  PublishPostRequest  $request
+     * @param  Post  $post
+     *
+     * @return RedirectResponse
+     *
+     * @throws GeneralException
+     */
+    public function publish(PublishPostRequest $request, Post $post)
+    {
+        $this->postRepository->publish($post);
+
+        return redirect()->route('admin.blog.post.index')->withFlashSuccess(__('alerts.backend.blog.posts.published'));
+    }
+
+    /**
+     * @param  PublishPostRequest  $request
+     * @param  Post  $post
+     *
+     * @return RedirectResponse
+     *
+     * @throws GeneralException
+     */
+    public function unpublish(PublishPostRequest $request, Post $post)
+    {
+        $this->postRepository->unpublish($post);
+
+        return redirect()->route('admin.blog.post.index')->withFlashSuccess(__('alerts.backend.blog.posts.unpublished'));
     }
 }

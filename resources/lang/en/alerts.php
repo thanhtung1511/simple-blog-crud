@@ -34,7 +34,13 @@ return [
                 'updated' => 'The user was successfully updated.',
                 'updated_password' => "The user's password was successfully updated.",
             ],
-        ]
+        ],
+        'blog' => [
+            'posts' => [
+                'published' => 'The post was successfully published.',
+                'unpublished' => 'The post was successfully unpublished.',
+            ],
+        ],
     ],
 
     'frontend' => [
