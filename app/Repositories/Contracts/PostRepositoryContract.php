@@ -97,9 +97,9 @@ interface PostRepositoryContract extends BaseRepositoryContract
     public function delete(Post $post): Post;
 
     /**
-     * @param $parameters
+     * @param  array|null  $parameters
      * @return QueryBuilder
      */
-    public function filter(array $parameters);
+    public function filter(?array $parameters);
 
 }

@@ -1,11 +1,11 @@
 // Loaded after CoreUI app.js
+import moment from 'moment'
 
-let dateRangePickers = $('input.date-range-picker');
+let dateRangePickers = $('input#post_date_filter');
 
 if (dateRangePickers.length) {
     dateRangePickers.daterangepicker({
         opens: 'left',
-        // autoUpdateInput: false,
         locale: {
             cancelLabel: 'Clear'
         }
@@ -14,9 +14,16 @@ if (dateRangePickers.length) {
     }).on('apply.daterangepicker', function (ev, picker) {
         let startDateInput = $(this).siblings('input[type=hidden].picker-start-date');
         let endDateInput = $(this).siblings('input[type=hidden].picker-end-date');
-        console.log(startDateInput);
-        console.log(endDateInput);
         startDateInput.val(picker.startDate.format('YYYY-MM-DD'))
         endDateInput.val(picker.endDate.format('YYYY-MM-DD'))
+        $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+    }).on('cancel.daterangepicker', function (ev, picker) {
+        $(this).val('');
     });
+    if (start_date !== undefined && start_date !== '') {
+        $('input#post_date_filter').data('daterangepicker').setStartDate(moment(start_date, 'YYYY-MM-DD'));
+    }
+    if (end_date !== undefined && end_date !== '') {
+        $('input#post_date_filter').data('daterangepicker').setEndDate(moment(end_date, 'YYYY-MM-DD'));
+    }
 }

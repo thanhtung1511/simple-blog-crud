@@ -31,7 +31,8 @@
                             {{ html()->text()
                                 ->id('post_date_filter')
                                 ->class('form-control date-range-picker')
-                                ->placeholder(__('labels.backend.blog.posts.filter.date')) }}
+                                ->placeholder(__('labels.backend.blog.posts.filter.date'))
+                                ->value(request()->input('filter.updated_at.start_date', '').' - '.request()->input('filter.updated_at.end_date', ''))}}
                             {{ html()->hidden('filter[updated_at][start_date]')->class('picker-start-date') }}
                             {{ html()->hidden('filter[updated_at][end_date]')->class('picker-end-date') }}
                         </div><!--col-->
@@ -42,7 +43,7 @@
                         {{ html()->label(__('labels.backend.blog.posts.filter.status'))->class('col-md-2 form-control-label')->for('status_filter') }}
 
                         <div class="col-md-10">
-                            {{ html()->select('filter[published]', ['' => 'All', '1' => 'Published', '0' => 'Unpulished'])->value(request('filter[published]',''))->class('form-control')}}
+                            {{ html()->select('filter[published]', ['' => 'All', '1' => 'Published', '0' => 'Unpulished'])->value(request()->input('filter.published', ''))->class('form-control')}}
                         </div><!--col-->
                     </div><!--form-group-->
                 </div><!--col-->
@@ -77,8 +78,8 @@
                                             {{ $post->creator->name }}
                                         </a>
                                     </td>
-                                    <td>{{ $post->created_at->diffForHumans() }}</td>
-                                    <td>{{ $post->updated_at->diffForHumans() }}</td>
+                                    <td>{{ $post->created_at->format('M d, Y H:i:s') }}</td>
+                                    <td>{{ $post->updated_at->format('M d, Y H:i:s') }}</td>
                                     <td>@include('backend.blog.post.includes.publication', ['post' => $post])</td>
                                     <td class="btn-td">@include('backend.blog.post.includes.actions', ['post' => $post])</td>
                                 </tr>
@@ -104,3 +105,10 @@
         </div><!--card-body-->
     </div><!--card-->
 @endsection
+
+@push('before-scripts')
+    <script type="text/javascript">
+        var start_date = '{!! request()->input('filter.updated_at.start_date', '') !!}';
+        var end_date = '{!! request()->input('filter.updated_at.end_date','') !!}';
+    </script>
+@endpush

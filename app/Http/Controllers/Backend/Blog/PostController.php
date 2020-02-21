@@ -32,9 +32,13 @@ class PostController extends Controller
      */
     public function index(ManagePostRequest $request)
     {
-        return view('backend.blog.post.index')
-            ->withPosts($this->postRepository->filter($request->only('filter')['filter'])
-            ->paginate());
+
+        $posts = $this->postRepository
+            ->filter($request->get('filter', null))
+            ->paginate()
+            ->appends($request->only('filter'));
+
+        return view('backend.blog.post.index')->withPosts($posts);
     }
 
     /**

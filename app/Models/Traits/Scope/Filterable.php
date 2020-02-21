@@ -8,16 +8,14 @@ trait Filterable
 {
     public function scopeFilter($query, $parameters)
     {
-        foreach ($parameters as $field => $value) {
-            $method = 'filter' . Str::studly($field);
-//            dump(Str::studly($field));
-            if (method_exists($this, $method)) {
-//                dump($field);
-                $this->{$method}($query, $value);
+        if (\is_array($parameters)) {
+            foreach ($parameters as $field => $value) {
+                $method = 'filter' . Str::studly($field);
+                if (method_exists($this, $method)) {
+                    $this->{$method}($query, $value);
+                }
             }
         }
-
-//        dd($parameters);
 
         return $query;
     }
