@@ -21,6 +21,10 @@ trait PostMethod
 
     public function getRouteKeyName(): string
     {
+        if (app()->get('router')->currentRouteNamed('admin.blog.post.*')) {
+            return parent::getRouteKeyName();
+        }
+
         return 'slug';
     }
 
