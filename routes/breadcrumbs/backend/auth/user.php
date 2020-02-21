@@ -3,22 +3,12 @@
 
 // User
 Breadcrumbs::for('admin.auth.user.index', function ($trail) {
-    $trail->push(__('labels.backend.auth.users.management'), route('admin.auth.user.index'));
-});
-
-Breadcrumbs::for('admin.auth.user.deactivated', function ($trail) {
-    $trail->parent('admin.auth.user.index');
-    $trail->push(__('menus.backend.auth.users.deactivated'), route('admin.auth.user.deactivated'));
-});
-
-Breadcrumbs::for('admin.auth.user.deleted', function ($trail) {
-    $trail->parent('admin.auth.user.index');
-    $trail->push(__('menus.backend.auth.users.deleted'), route('admin.auth.user.deleted'));
+    $trail->push(__('menus.backend.auth.users.management'), route('admin.auth.user.index'));
 });
 
 Breadcrumbs::for('admin.auth.user.create', function ($trail) {
     $trail->parent('admin.auth.user.index');
-    $trail->push(__('labels.backend.access.users.create'), route('admin.auth.user.create'));
+    $trail->push(__('menus.backend.auth.users.create'), route('admin.auth.user.create'));
 });
 
 Breadcrumbs::for('admin.auth.user.show', function ($trail, $id) {

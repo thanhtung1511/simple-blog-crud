@@ -27,6 +27,7 @@ return [
                 'deactivated' => 'Deactivated Users',
                 'deleted' => 'Deleted Users',
                 'edit' => 'Edit User',
+                'management' => 'Users Management',
                 'main' => 'Users',
                 'view' => 'View User',
             ],
