@@ -1,6 +1,8 @@
 /css
 /fonts
 /images
+!images/default-image.png
+!images/logo.png
 /js
 /storage
 mix-manifest.json
